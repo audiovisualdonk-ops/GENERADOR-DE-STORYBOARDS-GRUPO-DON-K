@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de Storyboards - Grupo Don K</title>
+    <style>
+        /* Estilos CSS (sin cambios) */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER CON LOGO -->
+        <div class="header">
+            <div class="logo-container">
+                <img id="brandLogo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M8AAAMEAYHu2fVHAAAAAElFTkSuQmCC" alt="Logo de marca">
+            </div>
+            <div class="header-text">
+                <h1 id="headerTitle">Generador de Storyboards</h1>
+                <p id="headerSubtitle">Grupo Don K</p>
+            </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="content">
+            <form id="storyboardForm">
+                <!-- SELECCIÓN DE MARCA -->
+                <div class="form-section">
+                    <h2>Información de la campaña</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="marca">¿Para cuál marca?</label>
+                            <select id="marca" required>
+                                <option value="">Selecciona una marca...</option>
+                                <option value="vizion">VIZIÓN de los Altos</option>
+                                <option value="donk-restaurant">DON K Restaurant</option>
+                                <option value="yoho">YOHO Hielo</option>
+                                <option value="pastor">PASTOR DON K</option>
+                                <option value="donk-corp">GRUPO DON K</option>
+                            </select>
+                        </div>
+
+                        <!-- SUBCATEGORÍA - SOLO VIZION -->
+                        <div class="form-group" id="pillarGroup" style="display: none;">
+                            <label for="pilar">Pilar de contenido</label>
+                            <select id="pilar">
+                                <option value="">Selecciona un pilar...</option>
+                                <option value="01-venta">01 - Venta</option>
+                                <option value="02-promocion">02 - Promoción</option>
+                                <option value="03-informativo">03 - Informativo</option>
+                                <option value="04-educativo">04 - Educativo</option>
+                                <option value="05-creativo">05 - Creativo</option>
+                                <option value="06-empresa">06 - Empresa</option>
+                                <option value="07-entretenimiento">07 - Entretenimiento</option>
+                                <option value="08-colaboraciones">08 - Colaboraciones</option>
+                                <option value="09-storytelling">09 - Storytelling</option>
+                            </select>
+                        </div>
+
+                        <!-- SUBCATEGORÍA - DON K RESTAURANT -->
+                        <div class="form-group" id="restaurantGroup" style="display: none;">
+                            <label for="restaurant">Tipo de establecimiento</label>
+                            <select id="restaurant">
+                                <option value="">Selecciona...</option>
+                                <option value="bar">Bar Don K</option>
+                                <option value="restaurante">Restaurante</option>
+                            </select>
+                        </div>
+
+                        <!-- MES Y AÑO -->
+                        <div class="form-group">
+                            <label for="mesAno">Fecha</label>
+                            <input type="date" id="mesAno" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="videoName">Nombre del video</label>
+                            <input type="text" id="videoName" placeholder="Ej: Cata de Tequila Trujillo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="scriptLink">Link del guión (opcional)</label>
+                            <input type="url" id="scriptLink" placeholder="https://docs.google.com/...">
+                        </div>
+                    </div>
+
+                    <!-- FORMATO DEL VIDEO -->
+                    <div class="form-group">
+                        <label for="videoFormat">Formato del video</label>
+                        <select id="videoFormat" required>
+                            <option value="">Selecciona...</option>
+                            <option value="horizontal">Horizontal</option>
+                            <option value="vertical">Vertical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ESCENAS -->
+                <div class="form-section">
+                    <h2>Escenas</h2>
+                    <div class="scenes-container" id="scenesContainer">
+                        <!-- Las escenas se generarán aquí -->
+                    </div>
+                    <button type="button" class="add-scene-btn" onclick="addScene()">Agregar escena</button>
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="submit-btn">Crear Storyboard en Google Drive</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Código JavaScript (sin cambios, excepto la función establecerFechaActual)
+        
+        // Establecer la fecha actual en el campo de fecha
+        function establecerFechaActual() {
+          var fechaInput = document.getElementById('mesAno');
+          var fechaActual = new Date();
+          var ano = fechaActual.getFullYear();
+          var mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+          var dia = ("0" + fechaActual.getDate()).slice(-2);
+          fechaInput.value = ano + "-" + mes + "-" + dia;
+        }
+
+        // Llamar a la función al cargar la página
+        window.addEventListener('load', establecerFechaActual);
+    </script>
+</body>
+</html>
